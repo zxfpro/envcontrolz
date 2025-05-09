@@ -13,7 +13,7 @@
 
 
 1 mkdocs new .
-2 p_updatedocs
+2 p_pulldocs 
 3 构建包 init
 4 更新readme  pyproject
 5 更新mkdocs.yml  

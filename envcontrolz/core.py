@@ -1,4 +1,47 @@
 
+
+
+
+### 工具
+```python
+uv python dir
+uv tool dir
+```
+
+### 安装python
+```python
+uv python list
+uv python install 3.13
+```
+
+### 升级包
+```python
+uv lock --upgrade-package requests
+```
+
+### 设定环境变量
+```bash
+# 缓存目录
+export UV_CACHE_DIR=/path/to/cache/dir
+
+# 镜像地址
+export UV_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 额外镜像地址
+export EXTRA_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 不用缓存
+export UV_NO_CACHE=0
+
+# 下载包时的超时时间，单位为秒
+UV_HTTP_TIMEOUT=60
+```
+
+
+
+
+
+
 class UVManager():
 	def __init__(self) -> None:
 		pass
@@ -27,6 +70,11 @@ class UVManager():
 
 	def run():
 		return "uv run ./hallo.py"
+
+	def requiretmn():
+		### 导出环境
+		# uv export --format requirements-txt > requirements.txt
+
 
 class docker_compose():
 	"""
@@ -212,85 +260,117 @@ class Xmind:
 #### GitHub
 
 
+class Githubs():
+	def __init__(self) -> None:
+		pass
+
+	def multi_user_manage(self):
+		# GitHub Desktop 多账户管理 文件 > 选项 > 账户
 
 
-**GitHub Desktop 多账户管理**
-1. 添加两个账户：
-   - 文件 > 选项 > 账户
-   - 分别登录个人和公司账户
-2. 克隆时选择身份：
-   - 点击 "Clone Repository" 时选择对应账户
-3. 提交时自动使用仓库关联账户
 
 
-如何防止.idea 这类文件上传到github中呢?
- : 我采用DeskTop 方案, 并使用PyCharm进行编程, 如何防止.idea 这类文件上传到github中呢?
 
- : 在使用 GitHub Desktop 以及 PyCharm 时，可以通过创建或修改 `.gitignore` 文件来防止某些文件或目录被提交到 GitHub。对于 PyCharm 项目，通常需要忽略 `.idea` 目录以及其他不必要的文件。
+class ServerMechine():
+	def __init__(self) -> None:
+		pass
 
-步骤：
+	def set_server(self):
+		# - 关闭自动睡眠   - 设置-> 锁定屏幕 -> 不活跃时启动屏幕保护程序 -> 永不,永不 永不
+		# - 开机自动登录   - 用户和群组 -> 自动以此身份登录
+		# - 断点后自动开机 - 节能 -> 断电后自动开机
+		# - 远程访问      - 设置-> 通用-> 共享 -> 远程管理
 
-1. **创建或修改 `.gitignore` 文件：**
+	def build_mechine(self):
+		pass
 
-   在你的项目根目录下，确保有一个名为 `.gitignore` 的文件。如果没有，你需要创建一个。
+	def get_info_mechine(self):
+		"""
+		uname -m #查看架构
+		df -h # 查看磁盘
+		lscpu # cpu信息
+		nvidia-smi # gpu信息
+		ping -4 www.baidu.com
+		"""
 
-2. **配置 `.gitignore` 文件：**
+	def create_user(self):
+		"""
+		创建用户组
+		```
+		adduser username
+		passwd username
+		usermod -aG sudo qework
+		```
+		"""
 
-   打开 `.gitignore` 文件，添加如下行来忽略 PyCharm 相关的配置文件：
+	def init_server(self):
+		# 安装基础依赖包
+		"""
+		
+		sudo apt update
+		sudo apt install build-essential
+		apt install python3
+		apt install vim git curl htop -y
 
-   ```plaintext
-   # Ignore PyCharm project files
-   .idea/
-   ```
+		"""
 
-如何把误上传的github中的.idea文件夹删除呢?
- : 如何把误上传的github中的.idea文件夹删除呢?
-:  要从 GitHub 仓库中删除误上传的 `.idea` 文件夹，你可以按照以下步骤操作：
+	def anz_conda(self):
+		"""
+		安装conda
+		wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-步骤一：在本地仓库中删除 `.idea` 文件夹
+		bash Miniconda3-latest-Linux-x86_64.sh
 
-1. **打开终端或命令行**，导航到你的本地 Git 仓库的根目录。
+		"""
 
-2. **从 Git 索引中移除 `.idea` 文件夹**，但保留本地文件。这会从版本控制中删除该文件夹，但不会删除本地的实际文件：
 
-   ```bash
-   git rm -r --cached .idea/
-   ```
+class XClashh():
+	def 如何在局域网中设置代理():
+		"""
+## 可以让设备访问外网
 
-3. **确认移除操作**：确保 `.idea` 文件夹不再处于索引中。
+## 方法
+windows10 -> 设置 -> 代理 -> 启用“使用代理服务器” -> 输入代理服务器地址和端口号
+mac -> 点击当前连接的Wi-Fi网络旁边的“i”按钮 -> 配置代理”->“手动” -> 输入代理服务器地址和端口号
+Oculurs -> 网络 -> 高级设置 -> 代理 ->输入代理服务器地址和端口号
 
-步骤二：更新 `.gitignore` 文件
 
-1. 编辑 `.gitignore` 文件，确保它包含 `.idea/` 行以忽略此文件夹：
+如何使用ClashX控制操作
 
-   ```plaintext
-   # Ignore PyCharm project files
-   .idea/
-   ```
 
-2. **添加 `.gitignore`** 文件到 Git 索引：
+## 性质
+**全局模式**：所有流量都通过代理节点，适合需要全面保护的情况。
+**规则模式**：根据配置文件中的规则，决定哪些流量走代理，哪些直连。
+**直连模式**：所有流量不走代理，适合访问本地网络。
+**脚本模式（Script Mode）**是一种高级功能，允许用户通过自定义脚本来动态处理网络请求的分流
 
-   ```bash
-   git add .gitignore
-   ```
+**设置系统代理**：如果希望所有应用都通过ClashX代理，可以在ClashX的菜单栏图标中选择“设置为系统代理”。
 
-步骤三：提交更改并推送到 GitHub
+可以使用局域网共享来分享VPN
 
-1. **提交更改**：
+## 方法
+分享 VPN : **允许局域网连接**
+记下显示的HTTP和SOCKS代理端口，通常默认HTTP端口为7890。
 
-   ```bash
-   git commit -m "Remove .idea directory from version control and update .gitignore"
-   ```
+1. 打开设备的Wi-Fi设置，点击当前连接的Wi-Fi网络旁边的“i”按钮。
+2. 滑动到底部，选择“配置代理”->“手动”。
+3. 填写以下信息：
+4. - **服务器**：输入ClashX运行的电脑的IP地址（如`192.168.x.x`）。
+        
+    - **端口**：输入ClashX的HTTP代理端口（通常是`7890`）。
+        
+    - **认证**：通常不开启。
+        
+设置[[如何在局域网中设置代理]]: 分享本机的外网网络给局域网的其他设备
 
-2. **推送更改**到 GitHub：
+将配置移到新的设备中: 配置 -> 打开配置文件夹 -> 将对应的配置文件夹移动到新位置
 
-   ```bash
-   git push origin main
-   ```
 
-   注意：如果你的默认分支不是 `main`，请将其替换为对应的分支名称（如 `master`）。
+查看端口被占用情况
 
-完成上述步骤后，`.idea` 文件夹将从你的 GitHub 仓库中删除，并且 `.gitignore` 文件将确保 `.idea` 文件夹不会在未来的提交中被包含。
+
+		"""
+
 
 
 
