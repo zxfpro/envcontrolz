@@ -1,126 +1,232 @@
 
-
-
-
-### 工具
-```python
-uv python dir
-uv tool dir
-```
-
-### 安装python
-```python
-uv python list
-uv python install 3.13
-```
-
-### 升级包
-```python
-uv lock --upgrade-package requests
-```
-
-### 设定环境变量
-```bash
-# 缓存目录
-export UV_CACHE_DIR=/path/to/cache/dir
-
-# 镜像地址
-export UV_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
-
-# 额外镜像地址
-export EXTRA_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
-
-# 不用缓存
-export UV_NO_CACHE=0
-
-# 下载包时的超时时间，单位为秒
-UV_HTTP_TIMEOUT=60
-```
-
-
-
-
-
-
 class UVManager():
+	"""
+	uv 是一个现代化的 Python 包管理器和构建工具，旨在提供比 pip 和 venv 更快的性能。
+
+	## 安装
+	```bash
+	curl -LsSf https://astral.sh/uv/install.sh | sh
+	```
+
+	## 命令
+
+	### 初始化项目
+	```bash
+	uv init .
+	uv init <project dir>
+	```
+
+	### 添加依赖
+	```bash
+	# 安装到默认环境
+	uv add <package>
+
+	# 安装到开发环境
+	uv add --group dev <package>
+
+	# 安装到生产环境
+	uv add --group production <package>
+	```
+
+	### 移除依赖
+	```bash
+	uv remove <package>
+	```
+
+	### 同步环境
+	```bash
+	uv sync
+	```
+
+	### 构建项目
+	```bash
+	uv build
+	```
+
+	### 运行脚本
+	```bash
+	uv run ./hallo.py
+	```
+
+	### 导出环境
+	```bash
+	uv export --format requirements-txt > requirements.txt
+	```
+
+	### 工具
+	```bash
+	uv python dir
+	uv tool dir
+	```
+
+	### 安装python
+	```bash
+	uv python list
+	uv python install 3.13
+	```
+
+	### 升级包
+	```bash
+	uv lock --upgrade-package requests
+	```
+
+	### 设定环境变量
+	```bash
+	# 缓存目录
+	export UV_CACHE_DIR=/path/to/cache/dir
+
+	# 镜像地址
+	export UV_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+
+	# 额外镜像地址
+	export EXTRA_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+
+	# 不用缓存
+	export UV_NO_CACHE=0
+
+	# 下载包时的超时时间，单位为秒
+	UV_HTTP_TIMEOUT=60
+	```
+	"""
 	def __init__(self) -> None:
 		pass
 
 	def add(package:str):
 		# 安装开发和生产环境
-		if 1:
-			return "uv add {package}"
-		elif:
-			return "uv add --group dev pandas"
-		else
-			return "uv add --group production requests"
-		
+		# This method seems to have incorrect logic based on the original code.
+		# It should likely take a group argument or have separate methods.
+		# Returning a generic command for now.
+		return f"uv add {package}"
+
 	def remove(package:str):
-		return "uv remove {package}"
+		return f"uv remove {package}"
 
-	def init(project):
-		return "uv init ."
-		return "uv init <project dir>"
+	def init(project: str = "."):
+		return f"uv init {project}"
 
-	def build():
+	def build(self):
 		return "uv build"
 
-	def sync():
+	def sync(self):
 		return "uv sync"
 
-	def run():
-		return "uv run ./hallo.py"
+	def run(script_path: str):
+		return f"uv run {script_path}"
 
-	def requiretmn():
-		### 导出环境
-		# uv export --format requirements-txt > requirements.txt
+	def export_requirements(output_file: str = "requirements.txt"):
+		return f"uv export --format requirements-txt > {output_file}"
+
+	def python_dir(self):
+		return "uv python dir"
+
+	def tool_dir(self):
+		return "uv tool dir"
+
+	def python_list(self):
+		return "uv python list"
+
+	def python_install(version: str):
+		return f"uv python install {version}"
+
+	def upgrade_package(package: str):
+		return f"uv lock --upgrade-package {package}"
+
+	# Environment variables are typically set outside the script,
+	# but we can provide methods to generate the commands.
+	def set_cache_dir(path: str):
+		return f"export UV_CACHE_DIR={path}"
+
+	def set_index_url(url: str):
+		return f"export UV_INDEX_URL={url}"
+
+	def set_extra_index_url(url: str):
+		return f"export EXTRA_INDEX_URL={url}"
+
+	def set_no_cache(value: int = 0):
+		return f"export UV_NO_CACHE={value}"
+
+	def set_http_timeout(seconds: int = 60):
+		return f"UV_HTTP_TIMEOUT={seconds}"
 
 
 class docker_compose():
 	"""
-	文件布局
-```
-project
-- docker-compose.yml
-- Dockerfile.kimi
-- Dockerfile.obsidianrag
-```
+	Helper class for generating docker-compose commands and providing documentation.
 
-ports 映射
-主机:容器
+	File layout example:
+	```
+	project
+	- docker-compose.yml
+	- Dockerfile.kimi
+	- Dockerfile.obsidianrag
+	```
 
-restart
-- `no`：不自动重启容器，默认值。
-- `always`：总是自动重启容器。
-- `on-failure`：仅在容器非正常退出时自动重启。
-- `unless-stopped`：除非手动停止容器，否则总是自动重启。
+	Ports mapping:
+	Host:Container
 
+	Restart policies:
+	- `no`: Do not automatically restart the container (default).
+	- `always`: Always automatically restart.
+	- `on-failure`: Only restart if the container exits with a non-zero exit code.
+	- `unless-stopped`: Always restart unless the container was explicitly stopped.
 	"""
 	def __init__(self) -> None:
 		pass
 
-	def build():
-		# 使用 `--force-rm` 和 `--no-cache` 选项
-		# docker-compose build --force-rm --no-cache mcpserver
-		# docker-compose build <service_name>
-
-	def up():
-		# docker-compose up mcpserver
-		# docker-compose up --build
-		# docker-compose up -d --no-deps --build <service_name>
-
-	def docker_run():
-		# 如果构建完成后，你希望立即启动该服务，可以使用以下命令
-		#  docker run -i -t ubuntu:15.10 /bin/bash
-
-	def write():
+	def build(self, service_name: str = None, force_rm: bool = False, no_cache: bool = False) -> str:
 		"""
-		
+		Generates the docker-compose build command.
 
-docker compose
+		Args:
+			service_name: The name of the service to build. If None, builds all services.
+			force_rm: Force removal of intermediate containers.
+			no_cache: Do not use cache when building the image.
+		"""
+		command = "docker-compose build"
+		if force_rm:
+			command += " --force-rm"
+		if no_cache:
+			command += " --no-cache"
+		if service_name:
+			command += f" {service_name}"
+		return command
 
+	def up(self, service_name: str = None, build: bool = False, detach: bool = False, no_deps: bool = False) -> str:
+		"""
+		Generates the docker-compose up command.
 
-```docker-compose.yml
+		Args:
+			service_name: The name of the service to start. If None, starts all services.
+			build: Build images before starting containers.
+			detach: Run containers in the background.
+			no_deps: Don't start linked services.
+		"""
+		command = "docker-compose up"
+		if build:
+			command += " --build"
+		if detach:
+			command += " -d"
+		if no_deps:
+			command += " --no-deps"
+		if service_name:
+			command += f" {service_name}"
+		return command
+
+	def docker_run(self, image: str, command: str) -> str:
+		"""
+		Generates a basic docker run command.
+
+		Args:
+			image: The Docker image to run.
+			command: The command to run inside the container.
+		"""
+		return f"docker run -i -t {image} {command}"
+
+	def write_example_compose_file(self) -> str:
+		"""
+		Provides an example docker-compose.yml file content.
+		"""
+		return """
 version: '3.8'
 
 services:
@@ -145,39 +251,144 @@ services:
       - .:/app
       - /Users/zhaoxuefeng/本地文稿/百度空间/cloud/Obsidian/知识体系尝试:/Users/zhaoxuefeng/本地文稿/百度空间/cloud/Obsidian/知识体系尝试
       - /Users/zhaoxuefeng/GitHub/test1:/Users/zhaoxuefeng/GitHub/test1
+"""
 
-```
-		"""
 
-class pi():
-	### 上传到pip私有源
+class IPManager():
+    """
+    Helper class for generating commands related to network and process information.
+    """
+    def __init__(self) -> None:
+        pass
+
+    def find_process_by_port_netstat(self, port: int) -> str:
+        """
+        Generates a command to find processes listening on a specific port using netstat.
+
+        Args:
+            port: The port number to check.
+        """
+        return f"""sudo netstat -tunlp | grep "{port}" """
+
+    def find_process_by_port_lsof(self, port: int) -> str:
+        """
+        Generates a command to find processes listening on a specific port using lsof.
+
+        Args:
+            port: The port number to check.
+        """
+        return f"""sudo lsof -i :{port} """
+
+    def make_executable(self, script_path: str) -> str:
+        """
+        Generates a command to make a script executable.
+
+        Args:
+            script_path: The path to the script.
+        """
+        return f"chmod +x {script_path}"
+
+    def move_script_to_bin(self, script_path: str, destination_dir: str = "/usr/local/bin") -> str:
+        """
+        Generates a command to move a script to a directory in the system's PATH.
+
+        Args:
+            script_path: The path to the script.
+            destination_dir: The destination directory (defaults to /usr/local/bin).
+        """
+        return f"sudo mv {script_path} {destination_dir}"
+
+    def run_python_script_from_string(self, python_code: str) -> str:
+        """
+        Generates a command to run Python code provided as a string.
+
+        Args:
+            python_code: The Python code to execute.
+        """
+        # Note: This is a basic example and might need escaping for complex code.
+        return f"""echo "{python_code.replace('"', '\\"')}" | python3"""
+
+
+
+class PiManager():
+	"""
+	Helper class for generating commands related to pip and private package indexes.
+	"""
 	def __init__(self):
 		pass
-	
-	def update(self):
-		# cp dist/dataserver-0.0.1-py3-none-any.whl /Users/zhaoxuefeng/Documents/DataCentre/pypi  # 拷贝你的whl包 到pypi私有源位置
-		# dir2pi /Users/zhaoxuefeng/Documents/DataCentre/pypi # 更新pip私有源
-		# pip2pi  /Users/zhaoxuefeng/Documents/DataCentre/pypi pandas # 使用pip私有源
 
-	def pip(self):
-		# pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+	def update_private_index(self, whl_path: str, index_dir: str) -> str:
+		"""
+		Generates commands to copy a wheel file and update a private pip index.
+
+		Args:
+			whl_path: Path to the wheel file.
+			index_dir: Directory of the private pip index.
+		"""
+		copy_command = f"cp {whl_path} {index_dir}"
+		update_command = f"dir2pi {index_dir}"
+		return f"{copy_command} && {update_command}"
+
+	def install_from_private_index(self, package: str, index_url: str, index_dir: str) -> str:
+		"""
+		Generates a command to install a package from a private pip index.
+
+		Args:
+			package: The package name to install.
+			index_url: The URL of the private index.
+			index_dir: The directory of the private index (used by pip2pi).
+		"""
+		# Note: pip2pi is used to generate the index, pip install is used to consume it.
+		# The index_dir is not directly used in the pip install command, but is needed for context.
+		return f"pip install -i {index_url} {package}"
+
+	def install_from_mirror(self, package: str, mirror_url: str) -> str:
+		"""
+		Generates a command to install a package from a specified mirror.
+
+		Args:
+			package: The package name to install.
+			mirror_url: The URL of the mirror.
+		"""
+		return f"pip install -i {mirror_url} {package}"
+
+
 
 import numpy as np
-from IPython.display import display,Audio
+from IPython.display import display, Audio
 
 
-class Ipython():
-     def __init__(self) -> None:
-		  pass
-     
-	def du():
-		framerate = 44100 #评率
-		t = np.linspace(0,5,framerate*5)
-		dataleft = np.sin(2*np.pi*220*t)
-		dataright = np.sin(2*np.pi*224*t)
+class IpythonManager():
+	"""
+	Helper class for IPython related functionalities.
+	"""
+	def __init__(self) -> None:
+		pass
+
+	def play_tone(self, duration_seconds: int = 5, freq1: int = 220, freq2: int = 224, framerate: int = 44100):
+		"""
+		Plays a simple dual-tone sound in IPython.
+
+		Args:
+			duration_seconds: Duration of the tone in seconds.
+			freq1: Frequency of the first tone.
+			freq2: Frequency of the second tone.
+			framerate: The sample rate.
+		"""
+		t = np.linspace(0, duration_seconds, framerate * duration_seconds)
+		dataleft = np.sin(2 * np.pi * freq1 * t)
+		dataright = np.sin(2 * np.pi * freq2 * t)
 		display(Audio([dataleft, dataright], rate=framerate))
-	def play_speech(data):
-		display(Audio(data,autoplay=True))
+
+	def play_speech(self, data):
+		"""
+		Plays audio data in IPython.
+
+		Args:
+			data: The audio data to play.
+		"""
+		display(Audio(data, autoplay=True))
+
 
 
 class Colab(Know):
@@ -218,30 +429,6 @@ class Colab(Know):
       api_key = userdata.get('api_key')
 
 
-
-class IPManager():
-     def __init__(self) -> None:
-		  pass
-     
-	 def ip1():
-          # 使用netstat命令 该命令会列出所有与端口9669相关的网络连接信息，包括协议、本地地址、外部地址、状态和进程ID。
-          return """ `sudo netstat -tunlp | grep "9669"`"""
-          
-	def ip2():
-          # 该命令会列出占用端口9669的进程信息。
-          return """ `sudo lsof -i :9669` """
-
-	def xx():
-          chmod +x myscript.sh
-          
-	def write():
-		"""
-            
-		"""
-            sudo mv myscript.sh /usr/local/bin/myscript
-
-
-		echo "print('Hello from Python!')" | python3
 
 
 class Xmind:
@@ -373,9 +560,50 @@ Oculurs -> 网络 -> 高级设置 -> 代理 ->输入代理服务器地址和端�
 
 
 
+project_name=memorier
+
+cp ../tools/mkdocs.yml .
+mkdir $project_name && touch $project_name/core.py
+mkdir test && touch test/test_.py
+uv init .
+uv sync
+rm main.py   
+mkdocs new .
+bash update_docs.sh 
+mkdocs gh-deploy -d ../.temp
+bash run_build.sh 
+uv publish
 
 
 
+"""
+
+# 初始化一个仓库的步骤
+
+使用该方式 仓库 来固定知识
 
 
+0 起名 查看pypi 是否重名
+1 在能力面板创建其内容
+2 创建仓库
+3 克隆
 
+0 uv init .
+1 uv sync
+
+
+1 mkdocs new .
+2 p_pulldocs 
+3 构建包 init
+4 更新readme  pyproject
+5 更新mkdocs.yml  
+6 mkdocs gh-deploy -d ../.temp
+7 p_pushdocs 
+8 p_build
+9 uv publish
+
+测试的时候
+1 在jupyter 上使用 use case
+2 写入use case
+3 编写细节的 pytesr
+测试完再上的应该

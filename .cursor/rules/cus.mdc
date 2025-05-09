@@ -1,0 +1,34 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+### Manual 类型规则示例（API 文档）：
+---
+type: Manual
+name: API Documentation
+description: Manual rule for API documentation
+---
+
+# API Documentation Rule
+
+## Endpoints Structure
+- Use RESTful naming conventions
+- Include OpenAPI specifications
+- Document all query parameters and response fields
+
+## Authentication
+- Use Bearer tokens for authentication
+- Include example requests and responses
+
+## Error Handling
+- Return appropriate HTTP status codes
+- Include error messages in responses
+- Document common error scenarios
+
+## Usage Example
+```bash
+curl -X GET \
+  -H "Authorization: Bearer {token}" \
+  "https://api.example.com/v1/resources"
