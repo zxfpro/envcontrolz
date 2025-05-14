@@ -20,7 +20,6 @@
 6 mkdocs gh-deploy -d ../.temp
 7 p_pushdocs 
 8 p_build
-9 uv publish
 
 测试的时候
 1 在jupyter 上使用 use case

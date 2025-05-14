@@ -4,4 +4,9 @@ version = "0.1.2"
 description = "知识"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "requests>=2.32.3",
+]
+
+[tool.uv.workspace]
+members = ["envcontrolz/llm_councilz"]
